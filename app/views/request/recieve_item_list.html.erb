@@ -1,0 +1,35 @@
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="data_tables">
+	<thead>
+		<tr>
+			<th> Sl.no</th>
+			<th> User </th>
+			<th> Position</th>
+			<th> Product Name</th>
+			<th> Quantity</th>
+			<th> Date of purchase </th>
+			<th> Date Of return</th>
+			<th> Status </th>
+			<th> Delay by</th>
+			<th> Action </th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @records.each_with_index do |record, index| %>
+		<tr bgcolor="#CEF6F5" align = "center">
+			<td><%= index+1 %> </td>
+			<td> <%= record.user.user_detail.full_name%> </td>
+			<td> <%= record.user.user_detail.position %></td>
+			<td> <%= record.product_name %></td>
+			<td> <%=  record.quantity %></td>
+			<td> <%= record.purchase_date %></td>
+			<td> <%= record.return_item_date %> </td>
+			<td><span class='<%= record.color%>'> <%= record.item_recieve_status%> </td>
+			<% record.delay_check%>
+			<% record.status%>
+			<td> <%=record.delay_by_display%></td>
+			<td> <%= record_action_link(record).html_safe %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

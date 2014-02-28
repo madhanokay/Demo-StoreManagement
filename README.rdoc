@@ -1,0 +1,6 @@
+This is open souce application using ruby on rails, just clone and install your local system
+
+First do:                                   bundle install 
+                                            rake db:create
+                                            rake db:migrate
+And run rake task for admin create:         rake setup or rake db:setup

@@ -1,0 +1,22 @@
+<div class="span8 well">
+	<div style ="margin-left:50px;"class="row">
+		<%= form_for @user_detail,url:{action:'update_profile'}, html:{multipart:true},
+		 method:'post' do |f| -%>
+		  <%= f.label :first_name, "First Name" %>
+		  <%= f.text_field :first_name %>
+		  <%= f.label :second_name, "Second Name" %>
+		  <%= f.text_field :second_name %>
+		  <%= f.label :contact_number, "Contact Number" %>
+		  <%= f.text_field :contact_number %>
+		  <%= f.label :position, "Position" %>
+		  <%= f.text_field :position %>
+		  <%= f.label :address, "Address" %>
+		  <%= f.text_area :address, size:'5x5' %>
+		  <br>
+		  <%= f.file_field :image%>
+		  <br>
+		  <br>
+		  <%= f.submit "Submit", :disable_with => 'Submiting...', class:'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>

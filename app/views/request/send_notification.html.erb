@@ -1,0 +1,14 @@
+<div class = "span6 well">
+	<%= form_for @notification, url:{controller:'request', action:'create_notification'},
+						method:'post' do |f| -%>
+		<%= hidden_field_tag :id, @record.id %>
+	  <%= f.hidden_field :user_id, value:@user.id %>
+	  <%= f.hidden_field :from_user_id, value:@admin.id%>
+	  <%= text_field_tag :name, @user.user_detail.full_name, readonly:true %>
+	  <%= f.label :subject, "Subject" %>
+	  <%= f.text_field :subject %>
+	  <%= f.label :description, "Description" %>
+	  <%= f.text_area :description, size:'10x7' %><br>
+	  <%= f.submit "Send", :disable_with => 'Sending...', class:"btn btn-info"  %>
+	<% end %>
+</div>

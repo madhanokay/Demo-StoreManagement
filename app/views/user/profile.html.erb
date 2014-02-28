@@ -1,0 +1,16 @@
+<div class="span8 well">
+	<div class="row">
+		<div style="float:left;margin-left:10px;" class="span5">
+			<%=image_tag(@user_detail.image) %>
+		</div>
+		<div style="float:right" class="span7">
+			First Name :<%= @user_detail.first_name %><br>
+			Second Name :<%= @user_detail.second_name %><br>
+			Position : <%= @user_detail.position %><br>
+			Contact number : <%= @user_detail.contact_number %><br>
+			Address : <%= @user_detail.address %><br>
+			<%= button_to "edit", users_edit_profile_path, class:"btn btn-primary" %>
+		</div>
+	</div>
+</div>
+

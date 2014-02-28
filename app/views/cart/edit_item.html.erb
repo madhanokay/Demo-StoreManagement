@@ -1,0 +1,12 @@
+<div class="span8 well">
+	<div style="margin-left:10%;" class="row">
+		<%= form_for @item, url:{:action=>'update_item'}, method:'post' do |f| -%>
+			<%= f.hidden_field :id %>
+			<%= f.label :name, "Name" %>
+			<%= @item.product_name %><br>
+		  <%= f.label :quantity, "Quantity" %>
+		 	<%= f.text_field :quantity %>
+		 	<%= f.submit "update", :disable_with => 'updating...', class:'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>

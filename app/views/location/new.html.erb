@@ -1,0 +1,13 @@
+<div class="span8 well">
+	<div style="margin-left:10%;" class="row">
+		<%= form_for @location, url:{action:'create'}, method:'post' do |f| -%>
+		  <%= f.label :location_name, "Location Name" %>
+		  <%= f.text_field :location_name %>
+		  <%= f.label :location_description, "Location Description" %>
+		  <%= f.text_area :location_description %>
+		  <br>
+		  <br>
+		  <%= f.submit "Submit", :disable_with => 'Submiting...', class:'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>

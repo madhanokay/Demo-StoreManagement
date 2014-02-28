@@ -1,0 +1,13 @@
+<%= form_tag :controller => 'request', :action => 'record_list', :method => 'post' do %>
+  <%= label_tag :category, "Category" %>
+  <%= collection_select :category, :id, Category.all, :id, :name , prompt:"All" %>
+  <span style ="display:inline-block">
+	  <%= label_tag :purchase_date_from, "from date"%>
+	  <%= text_field_tag :purchase_date_from,'', id:'datepicker' %>
+  </span>
+  <span style ="display:inline-block">
+  	<%= label_tag :purchase_date_to, "to date"%>
+  	<%= text_field_tag :purchase_date_to,'', id:'datepicker1' %>
+  <span>
+  <%= submit_tag "Search" %>   
+<% end %>

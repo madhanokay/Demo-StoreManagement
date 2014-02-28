@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "StoreManager" %></title>
+    <%= csrf_meta_tags %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- Size should be 144 x 144 pixels -->
+    <%= favicon_link_tag 'images/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
+
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- Size should be 114 x 114 pixels -->
+    <%= favicon_link_tag 'images/apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
+
+    <!-- For first- and second-generation iPad: -->
+    <!-- Size should be 72 x 72 pixels -->
+    <%= favicon_link_tag 'images/apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- Size should be 57 x 57 pixels -->
+    <%= favicon_link_tag 'images/apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <%= favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon' %>
+  </head>
+  <body>
+
+    <div class="navbar navbar-fluid-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">StoreManager</a>
+          <div class="container-fluid nav-collapse">
+            <ul class="nav">
+              <% if user_signed_in?%>
+                <li><%= link_to "Home", users_profile_path%></li>
+                <%else%>
+                <li><%= link_to "Home", "/"%></li>
+              <%end%>
+              <li><%= link_to "About", "/about"  %></li>
+            </ul>
+            <ul class="nav pull-right">
+              <% if user_signed_in? %>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method:'delete'%></li>
+              <% else %>
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+        <% if user_signed_in? %>
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+                <li class="<%= 'active' if current_page?(users_profile_path) %>">
+                  <%= link_to "Profile", users_profile_path  %></li>
+                <% if is_admin %>
+                  <li class="<%= 'active' if current_page?(location_index_path) %>">
+                    <%= link_to 'Location', location_index_path %></li>
+                  <li class="<%= 'active' if current_page?(category_index_path) %>">
+                    <%= link_to 'Category', category_index_path %></li>
+                  <li class="<%= 'active' if current_page?(product_index_path) %>">
+                    <%= link_to 'Product', product_index_path %></li>
+                  <li class="<%= 'active' if current_page?(admin_users_list_path) %>">
+                    <%= link_to 'Users', admin_users_list_path %></li>
+                  <li class="<%= 'active' if current_page?(request_que_list_path) %>">
+                    <%= link_to 'Que List', request_que_list_path %></li>
+                  <li class="<%= 'active' if current_page?(request_index_path) %>">
+                    <%= link_to 'Requests', request_index_path %></li>
+                  <li class="<%= 'active' if current_page?(request_record_list_path) %>">
+                    <%= link_to 'Records', request_record_list_path %></li>
+                  <li class="<%= 'active' if current_page?(request_recieve_item_list_path) %>">
+                     <%= link_to 'Recieve Items', request_recieve_item_list_path %>
+                  </li>
+                  <li class="<%= 'active' if current_page?(users_notification_path) %>">
+                    <%= link_to 'Notification', users_notification_path %></li>
+                  <li class="<%= 'active' if current_page?(admin_damage_list_path) %>"> <%= link_to 'Damage List', admin_damage_list_path %></li>
+                  <li class="<%= 'active' if current_page?(users_change_password_path) %>" > <%= link_to 'Change password', users_change_password_path %> </li>
+                <%elsif current_user.status == true%>
+                  <li class="<%= 'active' if current_page?(cart_index_path) %>">
+                    <%= link_to 'Request item',cart_index_path%></li>
+                  <li class="<%= 'active' if current_page?(users_current_request_path) %>">
+                    <%= link_to 'Requests', users_current_request_path %></li>
+                  <li class="<%= 'active' if current_page?(users_report_list_path) %>">
+                    <%= link_to 'Reports', users_report_list_path %></li>
+                  <li class="<%= 'active' if current_page?(users_notification_path) %>">
+                    <%= link_to 'Notification', users_notification_path %></li>
+                  <li class="<%= 'active' if current_page?(users_change_password_path) %>" > <%= link_to 'Change password', users_change_password_path %> </li>
+                <%else%>
+                <li> <%= link_to 'Status', unauthorized_profile_path %> </li>
+                <%end%>
+            </ul>
+          </div><!--/.well -->
+        <%end%>
+        </div><!--/span-->
+
+        <div class="span9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+      <footer>
+
+        <p>&copy; Developed by <a href="https://bitbucket.org/ashikajith" title="Ashik Ajith">Ashik Ajith</a> for <a href="http://rubykitchen.in" title="RubyKitchen">Ruby Kitchen</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+
+  </body>
+</html>

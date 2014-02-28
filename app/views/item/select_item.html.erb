@@ -1,0 +1,17 @@
+<div class = "span6 well">
+	<%= form_for @product, url:{action:'create_item'}, method:'post' do |f| -%>
+		<%= f.hidden_field :id %><br>
+		<i>Product Name :</i> <%= @product.name%><br>
+		<%= image_tag(@product.image, size:'100x100')%><br>
+		<i><%= f.label :quantity, "Enter Quantity :" %></i>
+		<%= f.select :quantity,(1..((@product.quantity).to_i)).to_a ,{},
+													 :class => "span2" %>
+		<br>
+		<%= f.label :purchasing_date, "Purchasing Date" %>
+		<%= f.text_field :purchasing_date, value:Date.today, :id=>'datepicker1' %>
+		<%= f.label :return_date_of_item, "Returning date of item" %>
+		<%= text_field_tag :return_date_of_item, params[:return_date_of_item], :id=>'datepicker'%><br>
+		<%= f.submit "Submit", :disable_with => 'Submiting...', class:'btn btn-primary' %>
+	<% end %>
+	<%= link_to "Cancel", item_new_path, class:'btn btn-primary' %>
+</div>

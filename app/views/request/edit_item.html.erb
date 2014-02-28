@@ -1,0 +1,16 @@
+<div class="span8 well">
+	<div style="margin-left:10%;" class="row">
+		<%= form_for @item, url:{:action=>'update'}, method:'put' do |f| -%>
+			<%= f.hidden_field :id %>
+			<%= f.label :name, "Name" %>
+			<%= @item.product_name %><br>
+		  <%= f.label :quantity, "Quantity" %>
+		 	<%= f.select :quantity,(1..((@item.product_quantity).to_i)).to_a ,{}, :class => "span2" %>
+		 	<%= f.label :purchasing_date, "Purchasing Date" %>
+		 	<%= f.text_field :purchasing_date, id:'datepicker1' %>
+		 	<%= f.label :return_date, "Return Date" %>
+		 	<%= f.text_field :return_date, id:'datepicker' %>
+		 	<%= f.submit "update", :disable_with => 'updating...', class:'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>

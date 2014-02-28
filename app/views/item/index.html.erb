@@ -1,0 +1,36 @@
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="data_tables">
+	<thead>
+		<tr>
+			<th> Product Name</th>
+			<th> Quantity Requested</th>
+			<th> Price/unit</th>
+			<th> Total</th>
+			<th> Purchasing Date</th>
+			<th> Return Date</th>
+			<th> Item Availability </th>
+			<th> Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @items.each do |item| %>
+		<tr>
+			<td><%= link_to item.product_name, item_item_status_path(id:item.product_id),
+			method:'post'
+			 %> </td>
+
+			<td> <%= item.quantity %> </td>
+			<td> <%= item.product_price %> </td>
+			<td> <%= item.total%></td>
+			<td> <%= item.purchasing_date %></td>
+			<td> <%= item.return_date %></td>
+			<td> <%=item.item_available(item.product.quantity,
+										 item.item_status(item.product_id))%></td>
+			<td><%= item_link(item).html_safe%> </td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= link_to 'Add Items', new_item_path, class:'btn btn-primary' %><br>
+<br>
+<%= link_to 'Back to Cart', cart_index_path, class:'btn btn-primary' %>

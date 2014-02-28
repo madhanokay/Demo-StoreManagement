@@ -1,0 +1,13 @@
+<div class="span8 well">
+	<div style="margin-left:10%;" class="row">
+		<%= form_for @category, url:{action:'create'}, method:'post' do |f| -%>
+		  <%= f.label :name, "Category Name" %>
+		  <%= f.text_field :name %>
+		  <%= f.label :description, "Category Description" %>
+		  <%= f.text_area :description %>
+		  <br>
+		  <br>
+		  <%= f.submit "Submit", :disable_with => 'Submiting...', class:'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>

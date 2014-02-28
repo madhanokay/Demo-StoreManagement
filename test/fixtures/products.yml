@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  quantity: 1
+  trigger: 1
+  purchase_date: 2013-04-06
+  price: 1.5
+  location_id: 1
+  category_id: 1
+
+two:
+  name: MyString
+  quantity: 1
+  trigger: 1
+  purchase_date: 2013-04-06
+  price: 1.5
+  location_id: 1
+  category_id: 1

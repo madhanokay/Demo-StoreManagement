@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  quantity: 1
+  purchase_date: 2013-04-08
+  product_id: 1
+  category_id: 1
+
+two:
+  user_id: 1
+  quantity: 1
+  purchase_date: 2013-04-08
+  product_id: 1
+  category_id: 1

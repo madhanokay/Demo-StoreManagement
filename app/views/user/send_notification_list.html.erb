@@ -1,0 +1,32 @@
+<div class = "well" >
+  <ul class="nav nav-tabs">
+    <li ><a href="/users/notification" data-toggle="tab1">Inbox</a></li>
+    <li class="active"><a href="/users/send_notification_list" data-toggle="tab2">Sent Items</a></li>
+    <li><a href="/users/trash_list" data-toggle="tab3">Trash</a></li>
+  </ul>
+  <table class="table table-condensed table-hover" id ="data_tables">
+    <thead>
+      <tr>
+        <th class="span3">To </th>
+        <th class="span6"> Subject </th>
+        <th class="span2"> Message</th>
+        <th class="span9"> Content</th>
+        <th class="span2"> Time</th>
+        <th class="span2"> Details </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @notifications.each do |notification|%>
+        <tr bgcolor = "#E8E8E8" >
+          <td><strong><%= notification.user.user_detail.full_name %> </strong></td>
+          <td> <i><%= notification.subject%> </i> </td>
+          <td><span class="label pull-center">content:</span></td>
+          <td><strong><%= (notification.description)[0..13]%>....</strong></td>
+          <td><strong><%= time_ago_in_words(notification.created_at) %></strong></td>
+          <td> <%= link_to "Details", users_notification_detail_path(id:notification.id),
+          class:'btn btn-primary' %> </td>
+        </tr></a>
+      <%end%>
+    </tbody>
+  </table>
+</div>

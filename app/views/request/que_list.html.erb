@@ -1,0 +1,26 @@
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="data_tables">
+	<thead>
+		<tr>
+			<th> Sl.no</th>
+			<th> Cart </th>
+			<th> Total Price</th>
+			<th> User </th>
+			<th> Position</th>
+			<th> Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @carts.each_with_index do |cart, index| %>
+		<tr>
+			<% cart.total_price = cart.whole_price%>
+			<td><%= index+1 %> </td>
+			<td> <%= cart.id%> </td>
+			<td> <%= cart.total_price %></td>
+			<td> <%= cart.user.user_detail.full_name %></td>
+			<td> <%= cart.user.user_detail.position %></td>
+			<td><%= request_link_que(cart).html_safe%> </td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

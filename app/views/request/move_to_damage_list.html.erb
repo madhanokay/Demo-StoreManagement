@@ -1,0 +1,14 @@
+<div class ="span6 well">
+	<%= form_for @record, url:{action:'move_to_damage'}, method:'post' do |f|-%>
+		<%= hidden_field_tag :id, @record.id %>
+		<%= label_tag :product_id, "Product" %>
+		<%= text_field_tag :product_id,@record.product.name, readonly:true %>
+		<%= label_tag :category_id, "Category" %>
+		<%= text_field_tag :category_id, @record.product.category.name, readonly:true %>
+		<%= f.label :quantiy, "Quantity" %>
+		<%= f.select :quantity,(1..((@record.quantity).to_i)).to_a ,{}, :class => "span2" %>
+		<br>
+		<%= f.submit "Submit", :disable_with => 'Submiting...', class:'btn btn-primary' %>
+	<%end%>
+	<%= link_to "Cancel", request_recieve_item_list_path, class:'btn btn-primary' %>
+</div>

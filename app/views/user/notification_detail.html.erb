@@ -1,0 +1,23 @@
+<div class ="well">
+	<div>
+	<b>From : </b><%= @notification.sent.user_detail.full_name %>
+	</div>
+	<br>
+	<div>
+	<b>	to : </b><%= @notification.user.user_detail.full_name%>
+	</div>
+	<br>
+	<div>
+	<b>	Subject :</b><%= @notification.subject %>
+	</div>
+	<br>
+	<b>	Message Content:</b><br>
+	<div class = "message_content">
+		<p>
+		<%= @notification.description %></p>
+	</div>
+	<br>
+	<b>Message sent on : </b><%= @notification.created_at.strftime("%B %d, %Y") %>
+</div>
+<%= link_to "Back to Sent Items", users_send_notification_list_path,
+	class:'btn btn-primary' %>

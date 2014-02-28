@@ -1,0 +1,33 @@
+<div class="span8 well">
+	<div class="row">
+		<div style ="margin-left:50px;">
+			<% if @old_notification.subject%>
+			<%else%>
+					<%@old_notification.subject = " "%>
+			<%end%>
+			<%= form_for @notification, url:{controller:'user', action:'create_reply_notification'},
+								method:'post' do |f| -%>
+				<%= hidden_field_tag :id, @old_notification.id %>
+				<%= f.hidden_field :reply_content, :value=> @old_notification.description%>
+				<%= f.hidden_field :user_id, value: @old_notification.from_user_id%>
+				<%= f.label :name, "To :" %>
+			  <%= text_field_tag :name, @old_notification.from, readonly:true %>
+			  <%= f.label :subject, "Subject :" %>
+			  <%= text_field_tag :subject, @old_notification.subject, readonly:true %>
+			  <br>
+			  <div>
+			  old Message :
+			 <strong><i><%= @old_notification.description%></i></strong>
+			  </div>
+			  <br>
+			  <br>
+			  <%= f.label :subject, "Subject :" %>
+			  <%= f.text_field :subject,value:"Re:"+@old_notification.subject %>
+			  <%= f.label :description, "Description" %>
+			  <%= f.text_area :description,id:'text', size:'10x7'%>
+			  <br>
+			  <%= f.submit "Send", :disable_with => 'Sending...', class:'btn btn-primary' %>
+			<% end %>
+		</div>
+	</div>
+</div>

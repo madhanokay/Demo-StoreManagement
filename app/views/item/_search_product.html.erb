@@ -1,0 +1,7 @@
+<%= form_tag :controller => 'item', :action => 'new', :method => 'post' do %>
+  <%= label_tag :category, "Category" %>
+  <%= collection_select :post, :category, @category, :id, :name , prompt:"All" %>
+  <%= label_tag :location, "Location" %>
+  <%= collection_select :loc, :location, @location, :id, :location_name, prompt:"All"%>
+  <%= submit_tag "Search" %>   
+<% end %>

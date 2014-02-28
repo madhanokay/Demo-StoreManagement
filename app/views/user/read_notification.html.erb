@@ -1,0 +1,19 @@
+<div stlye="float:left;">
+ <%= link_to "Back To Inbox", users_notification_path, class:'btn btn-primary' %>
+</div>
+<br> <br>
+<div class ="well", id ="read_notification">
+	<div>
+		From : <%=@notification.sent.user_detail.full_name%><br>
+		<br>
+
+		Subject : <%=@notification.subject%> <br>
+		<br>
+	</div>
+	<div class = "message_content">
+		<br>
+		<strong><p><%=@notification.description%></p></strong>
+	</div>
+	 <%= link_to "reply", users_reply_notification_path(id:@notification.id),
+	 class:'btn btn-primary' %>
+ </div>

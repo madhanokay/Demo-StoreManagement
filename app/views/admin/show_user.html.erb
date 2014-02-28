@@ -1,0 +1,17 @@
+<div class="span8 well">
+	<div class="row">
+		<div style="float:left" class="span4">
+			<%=image_tag(@user_detail.image) %>
+		</div>
+		<div style="float:right" class="span8">
+			First Name :<%= @user_detail.first_name %><br>
+			Second Name :<%= @user_detail.second_name %><br>
+			Position : <%= @user_detail.position %><br>
+			Contact number : <%= @user_detail.contact_number %><br>
+			Address : <%= @user_detail.address %><br>
+			<br>
+			<%= button_to "back", admin_users_list_path, class:"btn btn-primary" %>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,29 @@
+<div class="span8 well">
+	<div style ="margin-left:50px;"class="row">
+		<%= form_for @product,url:{action:'create'}, html:{multipart:true},
+		 method:'post' do |f| -%>
+		  <%= f.label :name, "Product Name" %>
+		  <%= f.text_field :name %>
+		  <%= f.label :quantity, "Quantity" %>
+		  <%= f.text_field :quantity %>
+		  <%= f.label :trigger, "Trigger" %>
+		  <%= f.text_field :trigger %>
+		  <%= f.label :price, "Price" %>
+		  <%= f.text_field :price %>
+		  <%= f.label :priority, "Priority" %>
+		  <%= f.check_box :priority %><i> (please tick to set the product
+		  to high priority)</i>
+		  <%= f.label :purchase_date, "Purchase Date" %>
+		  <%= f.text_field :purchase_date, :id => 'datepicker', value:Date.today %>
+		  <%= f.label :location_id, "Location" %>
+		  <%= f.collection_select :location_id, @location, :id, :location_name  %>
+		  <%= f.label :category_id, "Category" %>
+		  <%= f.collection_select :category_id, @category, :id, :name %>
+		  <br>
+		  <%= f.file_field :image%>
+		  <br>
+		  <br>
+		  <%= f.submit "Submit", :disable_with => 'Submiting...', class:'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>

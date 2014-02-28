@@ -1,0 +1,18 @@
+<div class ="span6 well">
+	<%= form_for @product, url:{action:"move_to_damage"}, method:'post' do |f|-%>
+		<%= f.hidden_field :id %>
+		<%= label_tag :name, "Product Name" %>
+		<%= f.text_field :name, readonly:true %>
+		<%= f.label :category_id, "Category" %>
+		<%= text_field_tag :category_id, @product.category.name, readonly:true %>
+		<%= f.label :location_id, "Location" %>
+		<%= text_field_tag :location_id, @product.location.location_name, readonly:true %>
+		<%= f.label :trigger, "Trigger" %>
+		<%= f.text_field :trigger,readonly:true %>
+		<%= f.label :quantiy, "Quantity" %>
+		<%= f.select :quantity,(1..((@product.quantity).to_i)).to_a ,{}, :class => "span2" %>
+		<br>
+		<%= f.submit "Move", :disable_with => 'Submiting...', class:'btn btn-primary' %>
+	<%end%>
+	<%= link_to "Cancel", product_index_path, class:'btn btn-primary' %>
+</div>

@@ -1,0 +1,19 @@
+<div class="span4">
+	<div class="row">
+		<div style ="margin-left:50px;">
+			<%= form_for @notification, url:{controller:'user', action:'create_compose_notification'},
+								method:'post' do |f| -%>
+				<%= f.hidden_field :user_id, value: @admin.id%>
+				<%= f.hidden_field :from_user_id, value: current_user.id%>
+				<%= f.label :name, "To :" %>
+			  <%= text_field_tag :name,@admin.user_detail.full_name %>
+			  <%= f.label :subject, "Subject :" %>
+			  <%= f.text_field :subject %>
+			  <%= f.label :description, "Description" %>
+			  <%= f.text_area :description, size:'10x8' %>
+			  <%= f.submit "Send Message", :disable_with => 'Sending...',
+			  			class:"btn btn-info"%>
+			<% end %>
+		</div>
+	</div>
+</div>

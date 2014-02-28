@@ -1,0 +1,27 @@
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="data_tables">
+	<thead>
+		<tr>
+			<th> Name </th>
+			<th> Category</th>
+			<th> Location</th>
+			<th> Quantity</th>
+			<th> Price</th>
+			<th> Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<%= render 'search_product' %>
+		<% @products.each do |product| %>
+		<tr>
+			<td><%= product.name %> </td>
+			<td><%= product.category_name %> </td>
+			<td><%= product.location_location_name %> </td>
+			<td><%= product.quantity%> </td>
+			<td><%= product.price%></td>
+			<td><%= add_item_link(product).html_safe %> </td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= link_to "Back", item_index_path(:id=>session[:cart_id]), class:'btn btn-primary' %>

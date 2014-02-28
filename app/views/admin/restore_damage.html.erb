@@ -1,0 +1,15 @@
+<div class ="span6 well">
+	<%= form_for @damage_item, url:{action:'update_product'}, method:'post' do |f|-%>
+		<%= f.hidden_field :id %>
+		<%= f.hidden_field :product_id %>
+		<%= label_tag :product_id, "Product Name" %>
+		<%= text_field_tag :product_id,@damage_item.product.name, readonly:true %>
+		<%= label_tag :category_id, "Category" %>
+		<%= text_field_tag :category_id, @damage_item.product.category.name, readonly:true %>
+		<%= f.label :quantiy, "Quantity" %>
+		<%= f.select :quantity,(1..((@damage_item.quantity).to_i)).to_a ,{}, :class => "span2" %>
+		<br>
+		<%= f.submit "Restore", :disable_with => 'Submiting...', class:'btn btn-primary' %>
+	<%end%>
+	<%= link_to "Cancel", admin_damage_list_path, class:'btn btn-primary' %>
+</div>
